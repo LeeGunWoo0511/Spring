@@ -1,7 +1,10 @@
 package com.LeeGunWoo.web.controller.customer;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -47,9 +50,9 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("write_ok")
-	public String write_ok(Notice notice, MultipartFile file) throws SQLException{
+	public String write_ok(Notice notice, MultipartFile file, HttpServletRequest request) throws SQLException, IllegalStateException, IOException{
 		
-		noticeService.write_ok(notice, file);
+		noticeService.write_ok(notice, file, request);
 		
 		return "notice.write_ok";
 	}

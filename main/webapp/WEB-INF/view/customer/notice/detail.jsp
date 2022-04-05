@@ -147,6 +147,7 @@ table.type07 tbody th {
 						  <tr>
 						    <td colspan="2" class="content-area">
 						    	<div style="width:97%; height:100%">
+						    		<img alt="${n.files}" src="/upload/${n.files}"/><br>
 						    		${n.content}
 						    	</div>
 						    </td>

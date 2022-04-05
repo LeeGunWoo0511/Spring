@@ -1,5 +1,7 @@
 package com.LeeGunWoo.web.service.jdbc;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,9 @@ import com.LeeGunWoo.web.service.NoticeService;
 @Service  //@Controller, @Service, @Repository
 public class JDBCNoticeService implements NoticeService{
 
+	@Autowired
+	private ServletContext ctx;
+	
 	@Autowired
 	private DataSource dataSource;
 	private ResultSet rs;
@@ -58,7 +65,24 @@ public class JDBCNoticeService implements NoticeService{
 	}
 	
 	// 글쓰기 등록
-	public int write_ok(Notice notice, MultipartFile file) throws SQLException  {
+	public int write_ok(Notice notice, MultipartFile file, HttpServletRequest request) throws SQLException, IllegalStateException, IOException  {
+		
+		long size = file.getSize();
+		String fileName = file.getOriginalFilename();
+		System.out.printf("fileName:%s, fileSize:%d\n", fileName, size);
+		//ServletContext ctx = request.getServletContext();
+		String webPath = "/static/upload";
+		String realPath = ctx.getRealPath(webPath);
+		System.out.printf("realPath: %s\n", realPath);
+		// 업로드하기 위한 경로가 없을 경우
+		File savePath = new File(realPath);
+		if(!savePath.exists())
+			savePath.mkdirs();
+		
+		realPath += File.separator + fileName;
+		File saveFile = new File(realPath);
+		file.transferTo(saveFile);
+		
 		String SQL = "INSERT INTO NOTICE (ID, TITLE, WRITER_ID, CONTENT, FILES) VALUES (?, ?, ?, ?, ?)";
 		Connection con = dataSource.getConnection();
 		try{

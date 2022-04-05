@@ -15,7 +15,6 @@
 <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../../js/Customjs.js"></script>
 <script type="text/javascript" src="../../js/contactform.js"></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>하계소망교회</title>
 <link rel="stylesheet" href="../../bootstrap.css" type="text/css"
