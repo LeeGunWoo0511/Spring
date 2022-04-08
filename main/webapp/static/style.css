@@ -5714,7 +5714,7 @@ box-shadow:none;
 left:7.62%;
 right:auto;
 top:15px;
-width:179px;
+width:220px;
 min-height:53px;
 position:absolute;
 transform:rotate(0deg);
@@ -9435,6 +9435,19 @@ height: 80px;
 and (min-width : 150px)
 and (max-width : 767px) 
 {
+	.html_content p,.html_content span
+{
+font-family:Arial;
+font-size:1em;
+line-height: normal;
+color:#000000;
+font-style:normal;
+font-weight:normal;
+text-align:left;
+margin:0;
+margin-left: 17px;
+}
+
 #ttr_header_inner 
 {
 width:auto !important;
@@ -9822,9 +9835,22 @@ padding-bottom:0px;
 }
 /* Small Tabs (portrait and landscape) ----------- */
 @media only screen
+
 and (min-width : 768px)
 and (max-width : 1024px) 
 {
+.html_content p,.html_content span
+{
+font-family:Arial;
+font-size:1em;
+line-height: normal;
+color:#000000;
+font-style:normal;
+font-weight:normal;
+text-align:left;
+margin:0;
+margin-left: 17px;
+}
 #ttr_header_inner 
 {
 width: 100%  !important;
@@ -10393,7 +10419,7 @@ font-size:10.5px !important;
 left:6.87%;
 right:auto;
 top:15px;
-width:179px;
+width:220px;
 min-height:53px;
 position:absolute;
 transform:rotate(0deg);
@@ -11427,7 +11453,7 @@ font-size:8.96px !important;
 left:6.96%;
 right:auto;
 top:15px;
-width:179px;
+width:220px;
 min-height:53px;
 position:absolute;
 transform:rotate(0deg);

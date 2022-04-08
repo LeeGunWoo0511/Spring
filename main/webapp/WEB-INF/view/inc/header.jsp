@@ -53,10 +53,10 @@ jQuery(document).ready(function(){
 			<div id="ttr_menu_inner_in">
 				<div class="menuforeground"></div>
 				<div class="ttr_menushape1">
-					<div class="html_content">
+					<div class="html_content" style="text-align: right;">
 						<p>
-							<span
-								style="font-family: 'Roboto Slab', 'Arial'; font-weight: 700; font-size: 2.571em; color: rgba(53, 181, 235, 1);">CORPONE</span>
+							<span style="font-family: 'Roboto Slab', 'Arial'; font-weight: 700; font-size: 15px;  ">대한예수교장로회</span><br>
+							<span style="font-family: 'Roboto Slab', 'Arial'; font-weight: 700; font-size: 30px; ">하계소망교회</span>
 						</p>
 					</div>
 				</div>
@@ -67,7 +67,7 @@ jQuery(document).ready(function(){
 							<span class="sr-only"> </span> <span class="icon-bar"> </span> <span
 								class="icon-bar"> </span> <span class="icon-bar"> </span>
 						</button>
-						<a href="#" target="_self"> <img class="ttr_menu_logo"
+						<a href="/index" target="_self"> <img class="ttr_menu_logo"
 							src="menulogo.png">
 						</a>
 					</div>

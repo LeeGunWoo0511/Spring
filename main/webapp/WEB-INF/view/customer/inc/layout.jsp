@@ -10,6 +10,7 @@
 	<tiles:insertAttribute name="body"/>
     <!-- footer 부분 -->
 	<tiles:insertAttribute name="footer"/>
+	
 	<script type="text/javascript">
 		WebFontConfig = {
 			google : {

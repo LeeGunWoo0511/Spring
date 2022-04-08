@@ -31,6 +31,23 @@ public class JDBCNoticeService implements NoticeService{
 	private DataSource dataSource;
 	private ResultSet rs;
 	
+	
+	// 게시글 목록
+	@Override
+	public String getPass(String pass)throws Exception {{
+		
+		String Chk_Pass = "123456";
+		String chk_ok;
+		
+		if(Chk_Pass.equals(pass)) {
+			chk_ok = "OK";
+		}else {
+			chk_ok = "FALSE";
+		}
+		
+		return chk_ok;
+	}}
+		
 	// 글쓰기 등록 시 작성시간 구하는 함수
 	public String getDate1() throws SQLException {
 		String SQL = "SELECT NOW()";
@@ -69,20 +86,22 @@ public class JDBCNoticeService implements NoticeService{
 		
 		long size = file.getSize();
 		String fileName = file.getOriginalFilename();
-		System.out.printf("fileName:%s, fileSize:%d\n", fileName, size);
-		//ServletContext ctx = request.getServletContext();
-		String webPath = "/static/upload";
-		String realPath = ctx.getRealPath(webPath);
-		System.out.printf("realPath: %s\n", realPath);
-		// 업로드하기 위한 경로가 없을 경우
-		File savePath = new File(realPath);
-		if(!savePath.exists())
-			savePath.mkdirs();
-		
-		realPath += File.separator + fileName;
-		File saveFile = new File(realPath);
-		file.transferTo(saveFile);
-		
+		System.out.printf("%s\n", fileName);
+		if(fileName != "") {
+			System.out.printf("fileName:%s, fileSize:%d\n", fileName, size);
+			//ServletContext ctx = request.getServletContext();
+			String webPath = "/static/upload";
+			String realPath = ctx.getRealPath(webPath);
+			System.out.printf("realPath: %s\n", realPath);
+			// 업로드하기 위한 경로가 없을 경우
+			File savePath = new File(realPath);
+			if(!savePath.exists())
+				savePath.mkdirs();
+			
+			realPath += File.separator + fileName;
+			File saveFile = new File(realPath);
+			file.transferTo(saveFile);
+		}
 		String SQL = "INSERT INTO NOTICE (ID, TITLE, WRITER_ID, CONTENT, FILES) VALUES (?, ?, ?, ?, ?)";
 		Connection con = dataSource.getConnection();
 		try{

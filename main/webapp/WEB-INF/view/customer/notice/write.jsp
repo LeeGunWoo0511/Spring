@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	Date nowTime = new Date();
 	SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
@@ -10,12 +11,6 @@
 <html>
 <head>
 <meta charset="utf-8">
-
-<!-- 게시판 css -->
-<!-- 게시판 css -->
-<!-- 게시판 JS -->
-<!-- 게시판 JS -->
-
 <script type="text/javascript" src="../../js/jquery.js"></script>
 <script type="text/javascript" src="../../js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../../js/tt_slideshow.js"></script>
@@ -28,22 +23,7 @@
 <link rel="stylesheet" href="../../bootstrap.css" type="text/css"
 	media="screen" />
 <link rel="stylesheet" href="../../style.css" type="text/css" media="screen" />
-<!--[if lte IE 8]>
-<link rel="stylesheet"  href="../menuie.css" type="text/css" media="screen"/>
-<link rel="stylesheet"  href="../vmenuie.css" type="text/css" media="screen"/>
-<![endif]-->
 <script type="text/javascript" src="../../js/totop.js"></script>
-<!--[if IE 7]>
-<style type="text/css" media="screen">
-#ttr_vmenu_items  li.ttr_vmenu_items_parent {margin-left:-16px;font-size:0px;}
-</style>
-<![endif]-->
-<!--[if lt IE 9]>
-<script type="text/javascript" src="/js/html5shiv.js">
-</script>
-<script type="text/javascript" src="/js/respond.min.js">
-</script>
-<![endif]-->
 </head>
 <style>
 table.type07 {
@@ -87,7 +67,36 @@ table.type07 tbody th {
   vertical-align: top;
   border-bottom: 0px solid #ccc;
 }
+.btn-submit {
+	width: 100px;
+	height: 45px;
+	border-radius: 10px;
+	border: 0px solid;
+	background: #00B6F0;
+	color: #FFFFFF;
+	font-family: 'Roboto Slab','Arial';
+	font-weight: bold;
+    font-size: 18px;
+}
+.btn-cancel {
+	width: 100px;
+	height: 45px;
+	border-radius: 10px;
+	border: 0px solid;
+	background: #808080;
+	color: #FFFFFF;
+	font-family: 'Roboto Slab','Arial';
+	font-weight: bold;
+    font-size: 18px;
+}
 </style>
+<c:if test="${Pass eq 'FALSE'}">
+<script>
+	alert("암호가 틀렸습니다.\n다시한번 확인해주세요!!!");
+	history.back(-1);
+</script>
+</c:if>
+
 <body class="Firm-Profile">
 	<div class="totopshow">
 		<a href="#" class="back-to-top"><img alt="Back to Top"
@@ -149,8 +158,8 @@ table.type07 tbody th {
 						</table>
 						
 						<div style="text-align: center;">
-							<button type="submit">저장하기</button>
-							<button type="button" onclick="history.back('-1')">뒤로가기</button>
+							<button class="btn-submit" type="submit">저장하기</button>
+							<button class="btn-cancel" type="button" onclick="history.back('-1')">뒤로가기</button>
 						</div>
 					</div>
 					<div style="height: 0px; width: 0px; overflow: hidden;"></div>

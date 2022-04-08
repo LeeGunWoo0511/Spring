@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,10 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("write")
-	public String write(){
+	public String write(@RequestParam("pass") String pass, Model model) throws Exception{
+		
+		String security = noticeService.getPass(pass);
+		model.addAttribute("Pass", security);
 		
 		return "notice.write";
 	}

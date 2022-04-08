@@ -44,6 +44,17 @@ table.type07 tbody th {
   vertical-align: top;
   border-bottom: 0px solid #ccc;
 }
+.btn-back {
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+	border: 0px solid;
+	background: #808080;
+	color: #FFFFFF;
+	font-family: 'Roboto Slab','Arial';
+	font-weight: bold;
+    font-size: 15px;
+}
 </style>
 <body class="Firm-Profile">
 	<div class="totopshow">
@@ -74,9 +85,9 @@ table.type07 tbody th {
 				<div class="menuforeground"></div>
 				<div class="ttr_menushape1">
 					<div class="html_content">
-						<p>
+						<p style="width: 220px;">
 							<span
-								style="font-family: 'Roboto Slab', 'Arial'; font-weight: 700; font-size: 2.571em; color: rgba(53, 181, 235, 1);">CorpOne</span>
+								style="font-family: 'Roboto Slab', 'Arial'; font-weight: 700; font-size: 2.571em; color: rgba(53, 181, 235, 1);">하계소망교회</span>
 						</p>
 					</div>
 				</div>
@@ -87,7 +98,7 @@ table.type07 tbody th {
 							<span class="sr-only"> </span> <span class="icon-bar"> </span> <span
 								class="icon-bar"> </span> <span class="icon-bar"> </span>
 						</button>
-						<a href="#" target="_self"> <img class="ttr_menu_logo"
+						<a href="/index" target="_self"> <img class="ttr_menu_logo"
 							src="../../menulogo.png">
 						</a>
 					</div>
@@ -147,7 +158,9 @@ table.type07 tbody th {
 						  <tr>
 						    <td colspan="2" class="content-area">
 						    	<div style="width:97%; height:100%">
+						    		<c:if test="${!empty n.files}">
 						    		<img alt="${n.files}" src="/upload/${n.files}"/><br>
+						    		</c:if>
 						    		${n.content}
 						    	</div>
 						    </td>
@@ -157,7 +170,7 @@ table.type07 tbody th {
 						</table>
 						
 						<div style="text-align: center;">
-							<button onclick="history.back('-1')">목록으로</button>
+							<button class="btn-back" onclick="history.back('-1')">목록으로</button>
 						</div>
 					</div>
 					<div style="height: 0px; width: 0px; overflow: hidden;"></div>
