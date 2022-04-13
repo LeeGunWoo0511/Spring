@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +26,12 @@ public class NoticeController {
 	
 	
 	@RequestMapping("list")
-	public String list(@RequestParam(value = "p", defaultValue = "1") Integer page, Model model) throws ClassNotFoundException, SQLException {
+	public String list(@RequestParam(value = "p", defaultValue = "1") Integer page, @RequestParam("b_name") String b_name, Model model) throws ClassNotFoundException, SQLException {
 		
-		List<Notice> list = noticeService.getList(1, "TITLE", "");
+		List<Notice> list = noticeService.getList(page, b_name, "");
+		int Total_record = noticeService.getTotal(b_name, "");
 		model.addAttribute("list", list);
+		model.addAttribute("total", Total_record);
 		
 		return "notice.list";
 	}
@@ -45,16 +46,17 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("write")
-	public String write(@RequestParam("pass") String pass, Model model) throws Exception{
+	public String write(@RequestParam("pass") String pass, @RequestParam("b_name") String b_name, Model model) throws Exception{
 		
 		String security = noticeService.getPass(pass);
 		model.addAttribute("Pass", security);
+		model.addAttribute("b_name", b_name);
 		
 		return "notice.write";
 	}
 	
 	@RequestMapping("write_ok")
-	public String write_ok(Notice notice, MultipartFile file, HttpServletRequest request) throws SQLException, IllegalStateException, IOException{
+	public String write_ok(Notice notice, MultipartFile file, HttpServletRequest request, Model model) throws SQLException, IllegalStateException, IOException{
 		
 		noticeService.write_ok(notice, file, request);
 		

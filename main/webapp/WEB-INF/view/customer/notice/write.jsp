@@ -134,6 +134,7 @@ table.type07 tbody th {
 		</div>
 		<form action="write_ok" method="post" enctype="multipart/form-data" >
 		<input type="hidden" name="regdate" value="<%= sf.format(nowTime) %>"/>
+		<input type="hidden" name="b_name" value="${b_name}"/>
 		<div id="ttr_content_and_sidebar_container">
 			<div id="ttr_content">
 				<div id="ttr_content_margin" class="container-fluid">

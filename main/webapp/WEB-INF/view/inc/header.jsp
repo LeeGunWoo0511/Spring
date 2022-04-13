@@ -80,7 +80,7 @@ jQuery(document).ready(function(){
 									class="menuchildicon"></span>교회소개</a>
 								<hr class="horiz_separator" /></li>
 							<li class="ttr_menu_items_parent dropdown"><a
-								href="customer/notice/list" class="ttr_menu_items_parent_link"><span
+								href="customer/notice/list?b_name=jubo" class="ttr_menu_items_parent_link"><span
 									class="menuchildicon"></span>예배</a>
 								<hr class="horiz_separator" /></li>
 							<li class="ttr_menu_items_parent dropdown"><a href="map"
