@@ -20,7 +20,9 @@ import com.LeeGunWoo.web.service.NoticeService;
 @Controller
 @RequestMapping("/customer/notice/")
 public class NoticeController {
-	 
+	
+	String chk_board = "board";
+	
 	@Autowired
 	private NoticeService noticeService;
 	
@@ -32,6 +34,7 @@ public class NoticeController {
 		int Total_record = noticeService.getTotal(b_name, "");
 		model.addAttribute("list", list);
 		model.addAttribute("total", Total_record);
+		model.addAttribute("chk_board", chk_board);
 		
 		return "notice.list";
 	}
@@ -41,6 +44,7 @@ public class NoticeController {
 		
 		List<Notice> view = noticeService.getView(ID);
 		model.addAttribute("view", view);
+		model.addAttribute("chk_board", chk_board);
 		
 		return "notice.detail";
 	}
@@ -51,6 +55,7 @@ public class NoticeController {
 		String security = noticeService.getPass(pass);
 		model.addAttribute("Pass", security);
 		model.addAttribute("b_name", b_name);
+		model.addAttribute("chk_board", chk_board);
 		
 		return "notice.write";
 	}
@@ -58,7 +63,11 @@ public class NoticeController {
 	@RequestMapping("write_ok")
 	public String write_ok(Notice notice, MultipartFile file, HttpServletRequest request, Model model) throws SQLException, IllegalStateException, IOException{
 		
-		noticeService.write_ok(notice, file, request);
+		int ok = noticeService.write_ok(notice, file, request);
+		String b_name = request.getParameter("b_name");
+		model.addAttribute("chk", ok);
+		model.addAttribute("b_name", b_name);
+		model.addAttribute("chk_board", chk_board);
 		
 		return "notice.write_ok";
 	}

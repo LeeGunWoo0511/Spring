@@ -1,19 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="chk_route" value="/" />
+<c:if test="${chk_board eq 'board'}">
+	<c:set var="chk_route" value="../../" />
+</c:if>
 <head profile="http://www.w3.org/2005/10/profile">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>하계소망교회</title>
-<link rel="stylesheet" href="bootstrap.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-<script type="text/javascript" src="/js/jquery.js"></script>
-<script type="text/javascript" src="/js/jquery-ui.min.js"></script>
-<script type="text/javascript" src="/js/tt_slideshow.js"></script>
-<script type="text/javascript" src="/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/Customjs.js"></script>
-<script type="text/javascript" src="/js/contactform.js"></script>
-<script type="text/javascript" src="/js/totop.js"></script>
+<title>하계소망교회${chk_board}</title>
+<link rel="stylesheet" href="${chk_route}bootstrap.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="${chk_route}style.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="${chk_route}customer.css" type="text/css" media="screen" />
+<script type="text/javascript" src="${chk_route}js/jquery.js"></script>
+<script type="text/javascript" src="${chk_route}js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${chk_route}js/tt_slideshow.js"></script>
+<script type="text/javascript" src="${chk_route}js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${chk_route}js/Customjs.js"></script>
+<script type="text/javascript" src="${chk_route}js/contactform.js"></script>
+<script type="text/javascript" src="${chk_route}js/totop.js"></script>
 </head>
 <script>
 jQuery(document).ready(function(){
@@ -25,10 +29,10 @@ jQuery(document).ready(function(){
 	}
 });
 </script>
+<div id="popup_mask"></div>
 <body id="ctlClass">
 	<div class="totopshow">
-		<a href="#" class="back-to-top"><img alt="Back to Top"
-			src="images/gototop0.png" /></a>
+		<a href="#" class="back-to-top"><img alt="Back to Top" src="${chk_route}images/gototop0.png" /></a>
 	</div>
 	<div id="ttr_page" class="container">
 		<header id="ttr_header">
@@ -67,26 +71,30 @@ jQuery(document).ready(function(){
 							<span class="sr-only"> </span> <span class="icon-bar"> </span> <span
 								class="icon-bar"> </span> <span class="icon-bar"> </span>
 						</button>
-						<a href="/index" target="_self"> <img class="ttr_menu_logo"
-							src="menulogo.png">
+						<a href="/index" target="_self"> <img class="ttr_menu_logo" src="${chk_route}menulogo.png">
 						</a>
 					</div>
 					<div class="menu-center collapse navbar-collapse">
 						<ul class="ttr_menu_items nav navbar-nav navbar-right">
 							<!-- _active 해당 페이지시 class 추가 -->
 
-							<li class="ttr_menu_items_parent dropdown"><a href="info"
-								class="ttr_menu_items_parent_link"><span
-									class="menuchildicon"></span>교회소개</a>
-								<hr class="horiz_separator" /></li>
-							<li class="ttr_menu_items_parent dropdown"><a
-								href="customer/notice/list?b_name=jubo" class="ttr_menu_items_parent_link"><span
-									class="menuchildicon"></span>예배</a>
-								<hr class="horiz_separator" /></li>
-							<li class="ttr_menu_items_parent dropdown"><a href="map"
-								class="ttr_menu_items_parent_link"><span
-									class="menuchildicon"></span>오시는길</a>
-								<hr class="horiz_separator" /></li>
+							<li class="ttr_menu_items_parent dropdown">
+								<a href="${chk_route}info" class="ttr_menu_items_parent_link">
+									<span class="menuchildicon"></span>교회소개
+								</a>
+								<hr class="horiz_separator" />
+							</li>
+							<li class="ttr_menu_items_parent dropdown">
+								<a href="${chk_route}customer/notice/list?b_name=jubo" class="ttr_menu_items_parent_link">
+									<span class="menuchildicon"></span>예배
+								</a>
+								<hr class="horiz_separator" />
+							</li>
+							<li class="ttr_menu_items_parent dropdown">
+								<a href="${chk_route}map" class="ttr_menu_items_parent_link">
+									<span class="menuchildicon"></span>오시는길</a>
+								<hr class="horiz_separator" />
+							</li>
 						</ul>
 					</div>
 				</div>

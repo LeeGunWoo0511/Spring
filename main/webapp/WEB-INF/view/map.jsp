@@ -2,13 +2,10 @@
 	pageEncoding="UTF-8"%>
 <style>
 #map img {
-
-	max-width: none;
-
-	height: auto;
-
-	border: 0
-
+  max-width: none;
+  height: auto;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
 }
 </style>
 		<div id="ttr_content_and_sidebar_container">
@@ -27,15 +24,11 @@
 											style="font-family: 'Roboto Slab', 'Arial'; font-weight: 700; font-size: 2.571em; color: rgba(53, 181, 235, 1);">오시는길</span>
 									</p>
 								</div>
-								<div
-									style="height: 0px; width: 0px; overflow: hidden; -webkit-margin-top-collapse: separate;"></div>
+								<div style="height: 0px; width: 0px; overflow: hidden; -webkit-margin-top-collapse: separate;"></div>
 								<div style="clear: both;"></div>
 							</div>
 						</div>
 						<div id="map" style="width:97%;height:400px; margin:auto; margin-top:10px;"></div>
-					    <div
-							class="clearfix visible-lg-block visible-sm-block visible-md-block visible-xs-block">
-						</div>
 					</div>
 					<div class="ttr_Firm-Profile_html_row1 row">
 						
@@ -118,11 +111,27 @@
 	<script>
 	    var container = document.getElementById('map'); //지도 표시 div
 	    var options = {
-	        center: new kakao.maps.LatLng(37.635899, 127.075043), //지도의 중심좌표
+		        //center: new kakao.maps.LatLng(37.635899, 127.075043), //지도의 중심좌표
+		        center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표
 	        level: 1 //지도의 확대 레벨
 	    };
-	
+	    
 	    var map = new kakao.maps.Map(container, options);
+	    
+	 	// 지도를 표시하는 div 크기를 변경하는 함수입니다
+	    function resizeMap() {
+	        var mapContainer = document.getElementById('map');
+	        mapContainer.style.width = '97%';
+	        mapContainer.style.height = '400px'; 
+	    }
+
+	    function relayout() {    
+	        
+	        // 지도를 표시하는 div 크기를 변경한 이후 지도가 정상적으로 표출되지 않을 수도 있습니다
+	        // 크기를 변경한 이후에는 반드시  map.relayout 함수를 호출해야 합니다 
+	        // window의 resize 이벤트에 의한 크기변경은 map.relayout 함수가 자동으로 호출됩니다
+	        map.relayout();
+	    }
 	    
 	    // 마커가 표시될 위치
 	    var markerPosition  = new kakao.maps.LatLng(37.635899, 127.075043); 
@@ -137,5 +146,4 @@
 	
 	    // 아래 코드는 지도 위의 마커를 제거하는 코드
 	    // marker.setMap(null);  
-	    
 	</script>
